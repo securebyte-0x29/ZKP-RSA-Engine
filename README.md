@@ -1,65 +1,43 @@
-# ZKP-RSA-Engine
+# Project Title
+ZKP-RSA-Engine
 
-The project features a CLI (Command Line Interface) based simulation of encryption and decryption using cryptographic algorithms like RSA and ZKP.
-It is build without any external libraries and relies on pure arithmetic calculations for implementation of the algorithms.
+## Overview of the project
+This is a simple command line Python program that shows how RSA encryption and Zero Knowledge Proofs works. I built this entirely from scratch using basics of cryptography without using any external security libraries. 
 
----
-
-## Technical Features -
-
-* **i)   Zero Knowledge Proof Authentication:** Challenge-response verification protocol protecting user secrets from network exposure.
-* **ii)  Custom RSA Engine:** Prime number generation, Euler's totient calculation , gcd calculations , and modular calculations.
-* **iii) RAM Based Memory:** Ephemeral memory storage (data) handling encrypted exchanges with zero disk I/O.
-* **iv)  Custom Codec's:** Character-to-integer conversion routines converting strings to ASCII arrays for mathematical processing.
-
----
-
-## Technologies and Tools Used -
-
-* **i)   Programming Language:** Python 3.8+ .
-* **ii)  Core Modules:** Standard Python standard library , Random Module.
-* **iii) Version Control:** Git & GitHub
-* **iv)  Development Environment:** Visual Studio Code (VS Code).
-
----
+## Features
+* **ZKP Login:** A math-based challenge that lets a user prove who they are without ever sending a password over the network.
+* **Custom RSA Encryption:** Code that generates random prime numbers and calculates public/private keys from scratch.
+* **Text Converter:** A custom tool that turns text letters into numbers so the RSA math formulas can encrypt them.
+* **RAM Memory Storage:** Messages are temporarily saved in a simple Python dictionary while the program is running, instead of saving them to a hard drive.
 
 ## Project Structure -
-
+   
 ```text
 RSA_ZKP_PROJECT/
-├── main.py               # Interactive CLI.
+├── main.py              
 ├── crypto_ops/
-│   ├── rsa_gen.py        # RSA key pair generations.
-│   └── zkp_auth.py       # ZKP protocol execution.
+│   ├── rsa_gen.py       
+│   └── zkp_auth.py      
 ├── math_ops/
-│   ├── prime_gen.py      # Custom prime number generation.
-│   └── gcd_e_d.py        # GCD , e ,d calculation.
+│   ├── prime_gen.py      
+│   └── gcd_e_d.py       
 └── utilities/
-    ├── codec.py          # Translator [Text to Ascii to Text].
-    └── memory.py         # Stores the Client Server Conversations.
+    ├── codec.py        
+    └── memory.py       
 ```
----  
 
-## Steps to Install & Run the Project -
+## Technologies/tools used
+* **Language:** Python 3.8+
+* **Libraries:** Standard Python library and the `random` module
+* **Tools:** Git, GitHub, and VS Code
 
-* **Prerequisites** i) Ensure Python 3.8 or higher is installed.
+## Steps to install & run the project
+1. Make sure Python 3.8 or higher is installed on your computer.
+2. Open your terminal and clone the project: `git clone https://github.com/securebyte-0x29/ZKP-RSA-Engine.git`
+4. Run the code: `python3 main.py`
 
-* **Installation** i) git clone https://github.com/securebyte-0x29/ZKP-RSA-Engine.git ii) cd RSA_ZKP_PROJECT
-
-* **Execution** i) python3 main.py
-
----
-
-## Instructions for Testing - 
-
-* **Step 1: System Key Generation ->** Select Option 1 from the main menu. Verify that the system generates distinct RSA key pairs (e, n) and (d, n) for both the Client and Server entities.
-
-* **Step 2: Execute ZKP Identity Handshake ->** Select the Option 2 after generating system keys. Client registers public token V, sends commitment X, receives challenge {0, 1} and submits response Y.
-  
-* **Step 3: Encrypt & Relay Message ->** Select Option 3 to send message. Observe the custom ASCII codec converting text into integer arrays and encrypting them with the recipient's public key before saving to the RAM inbox.
-  
-* **Step 4: Parse & Decrypt Inbox ->** Select Option 4 to view messages available to decrypt. Observe that the recipient successfully decrypts the integer array back to the original plaintext message using their private key.
-
----
-    
-    
+## Instructions for testing
+1. **Generate Keys:** Press 1 on the menu to create the RSA public and private keys for the Client and Server.
+2. **Test ZKP:** Press 2 to start the ZKP login. Watch the Client and Server pass numbers back and forth to verify identity.
+3. **Send Message:** Press 3 to type a text message. The program will turn your text into numbers and encrypt it with a public key.
+4. **Read Message:** Press 4 to decrypt the inbox. The receiver uses their private key to turn the numbers back into readable text.
